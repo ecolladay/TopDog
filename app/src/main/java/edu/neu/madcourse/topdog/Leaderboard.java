@@ -6,90 +6,70 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import org.jetbrains.annotations.NotNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import edu.neu.madcourse.topdog.DatabaseObjects.FetchDBUserUtil;
+import edu.neu.madcourse.topdog.DatabaseObjects.FetchDBAllUsersUtil;
 import edu.neu.madcourse.topdog.DatabaseObjects.LeaderboardEntry;
-import edu.neu.madcourse.topdog.DatabaseObjects.PutDBInfoUtil;
 import edu.neu.madcourse.topdog.DatabaseObjects.User;
 
 public class Leaderboard extends AppCompatActivity {
 
     private String username;
-    private DatabaseReference mDatabase;
+    ArrayList<LeaderboardEntry> displayLeaderboardEntries = new ArrayList<>();
+    LeaderboardRecyclerAdapter recyclerAdapter;
 
-    ArrayList<LeaderboardEntry> leaderboardEntries = new ArrayList<>();
-    ArrayList<String> currentLeaderNames = new ArrayList<>();
-    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("USERS");
         username = getIntent().getStringExtra(MainActivity.USERKEY);
 
-        listView = findViewById(R.id.leaderboard_listview);
-        ArrayAdapter arrayAdapter =
-                new ArrayAdapter(this, android.R.layout.simple_list_item_1, currentLeaderNames);
+        ArrayList<User> allUsers = new FetchDBAllUsersUtil().getAllUsers();
 
-        //Populates the listView
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                leaderboardEntries.clear();
-                currentLeaderNames.clear();
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    leaderboardEntries.add(new LeaderboardEntry(childSnapshot.getKey(),
-                            Objects.requireNonNull(childSnapshot.child("dogName").getValue()).toString(),
-                            childSnapshot.child("walkList").getChildrenCount()));
-                }
+        createRecyclerView();
 
-                leaderboardEntries.sort((o1, o2) -> Long.compare(o2.getNumberWalks(), o1.getNumberWalks()));
+        //creates and sorts the leaderboard entries
+        ArrayList<LeaderboardEntry> sortedLeaders = createAndSortLeaderboardEntries(allUsers);
 
-                for (int i = 0; i < leaderboardEntries.size(); i++) {
-                    currentLeaderNames.add(leaderboardEntries.get(i).getDogName());
-                }
-                listView.setAdapter(arrayAdapter);
-            }
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-            }
-        });
+        //populate the display
+        populateDisplayedLeaderboardEntries(sortedLeaders);
 
-        //Performs the pats!
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            User userToGetPat = new FetchDBUserUtil().getUser(leaderboardEntries.get(position).getUsername());
-
-            if(userToGetPat.getUsername().equals(username)) {
-                Toast.makeText(Leaderboard.this, "Oops, Can't pat yourself!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            int displayPats = userToGetPat.getNumPats();
-            displayPats++;
-
-            new PutDBInfoUtil().setValue(mDatabase.child(userToGetPat.getUsername()).child("numPats"), displayPats);
-            Toast.makeText(Leaderboard.this, "You sent " + userToGetPat.getDogName() + " a pat!", Toast.LENGTH_SHORT).show();
-        });
     }
+
+
+    private ArrayList<LeaderboardEntry> createAndSortLeaderboardEntries(ArrayList<User> allUsers) {
+        ArrayList<LeaderboardEntry> sortedEntries = new ArrayList<>();
+        for (User user : allUsers) {
+            LeaderboardEntry entry = new LeaderboardEntry(user.getUsername(), user.getDogName(),
+                    user.getWalkList().size());
+            sortedEntries.add(entry);
+        }
+        sortedEntries.sort((o1, o2) -> Long.compare(o2.getNumberWalks(), o1.getNumberWalks()));
+        return sortedEntries;
+    }
+
+    private void populateDisplayedLeaderboardEntries(ArrayList<LeaderboardEntry> sortedLeaders) {
+        for (LeaderboardEntry leader : sortedLeaders) {
+            displayLeaderboardEntries.add(leader);
+            recyclerAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void createRecyclerView() {
+        RecyclerView recyclerView = findViewById(R.id.leaderboard_recycler_view);
+        RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(rLayoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerAdapter = new LeaderboardRecyclerAdapter(displayLeaderboardEntries, username, Leaderboard.this);
+        recyclerView.setAdapter(recyclerAdapter);
+    }
+
 
     //Methods for handling the go Home functionality in the menu bar
     public boolean onCreateOptionsMenu(Menu menu) {

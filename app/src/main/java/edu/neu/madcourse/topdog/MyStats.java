@@ -30,7 +30,7 @@ public class MyStats extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_walk_history);
+        setContentView(R.layout.activity_user_stats);
 
         username = getIntent().getStringExtra(MainActivity.USERKEY);
         User user = new FetchDBUserUtil().getUser(username);

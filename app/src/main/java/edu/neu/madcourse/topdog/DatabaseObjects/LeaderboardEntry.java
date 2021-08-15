@@ -24,7 +24,7 @@ public class LeaderboardEntry {
     public String getDogName() { return this.doggoName;}
 
     public long getNumberWalks() {
-        return this.numberWalks = numberWalks;
+        return this.numberWalks;
     }
 
 }

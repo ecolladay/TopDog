@@ -28,7 +28,7 @@
         android:layout_width="56dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/silver"
-        app:layout_constraintEnd_toStartOf="@id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topdog"
@@ -41,7 +41,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topdog"
@@ -54,7 +54,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/silver"
@@ -67,7 +67,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/silver2"
@@ -80,7 +80,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bone"
@@ -93,7 +93,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bone2"
@@ -106,7 +106,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bone3"
@@ -119,15 +119,16 @@
         android:layout_height="50dp"
         android:layout_marginEnd="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leaderboard_listview"
+        app:layout_constraintEnd_toStartOf="@+id/leaderboard_recycler_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bone4"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bone" />
 
-    <ListView
-        android:id="@+id/leaderboard_listview"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/leaderboard_recycler_view"
         android:layout_width="311dp"
         android:layout_height="596dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,9 +136,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/gold"
         tools:layout_conversion_absoluteHeight="449dp"
-        tools:layout_conversion_absoluteWidth="411dp">
-
-    </ListView>
+        tools:layout_conversion_absoluteWidth="411dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
