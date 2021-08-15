@@ -7,7 +7,7 @@ Project highlights:
   <li>Pair programmed in group of 5 graduate developers</li>
   <li>Collaborated on design of main features, including the walk tracker, leaderboard, user stats page, and profile</li>
   <li>Worked with google API and GPS services to implement walk tracking features</li>
-  <li>My primary role was around the back end:
+  <li>My primary contributions were around the back end:
     <ul>
       <li>configuring the structure of user data as represented in POJO</li>
       <li>implementing log in and sign up features to create/store new users</li>
