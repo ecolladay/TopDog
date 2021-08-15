@@ -1,6 +1,6 @@
 # TopDog
 
-An android app (java) where users can track the walks they go on with their dog, interact with other dog owners in the area, and send "pats" (likes) to other dogs on the app
+A Java Android app where users can track their dog walks, interact with other dog owners in the area, and send "pats" (likes) to other dogs on the app
 
 Project highlights:
 <ul>
