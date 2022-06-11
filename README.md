@@ -7,13 +7,11 @@ Project highlights:
   <li>Pair programmed in group of 5 graduate developers</li>
   <li>Collaborated on design of main features, including the walk tracker, leaderboard, user stats page, and profile</li>
   <li>Worked with google API and GPS services to implement walk tracking features</li>
-  <li>My primary contributions were around the back end:
+  <li>My primary contributions were in backend as well as frontend:
     <ul>
-      <li>configuring the structure of user data as represented in POJO</li>
-      <li>implementing log in and sign up features to create/store new users</li>
-      <li>performing thread management</li>
-      <li>implementing utility classes to put and fetch user data off the main thread using Java ExecutiveService and Future< T > objects</li>
-      <li>enhancing performance where I saw fit</li>
+      <li>designing UI for app's pages and implementing these in XML </li>
+      <li>utilizing GPS to record and calculate distances of user's walks </li>
+      <li>setting up Google Firebase and designing schema for storing incoming data </li>
       <li>managing deserialization of information from the database into User object</li>
       <li>implementing menu navigation and log out functionality </li>
       <li>and assisting in debugging and code cleaning process consistently throughout 1 month duration of the project, prioritizing readability of code and reduction of time and space complexity to optimize within the confines of mobile hardware. </li>
