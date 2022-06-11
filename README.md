@@ -16,7 +16,7 @@ Project highlights:
       <li>pair and group programming and debugging, especially involving Google Maps API for map visualization of each walk </li>
     </ul>
   </li>
-  
+  </br>
 <img src="https://user-images.githubusercontent.com/46666676/129483870-a671767f-d26b-4730-b979-59c6951f7609.png" alt="drawing" width="250"/>
 <img src="https://user-images.githubusercontent.com/46666676/129483874-cc395afc-e69a-4932-bbaf-2286e264dffd.png" alt="drawing" width="250"/>
 <img src="https://user-images.githubusercontent.com/46666676/129483877-add827a3-c932-4033-b43a-f7944d4a9832.png" alt="drawing" width="250"/>
