@@ -10,7 +10,7 @@ Project highlights:
   <li>My primary contributions were in backend as well as frontend:
     <ul>
       <li>designing UI for app's pages and implementing these in XML </li>
-      <li>utilizing GPS to record and calculate distances of user's walks </li>
+      <li>utilizing internal GPS to record and calculate distances of user's walks </li>
       <li>setting up Google Firebase and designing schema for storing incoming data </li>
       <li>implementing walk cards for each recorded walk </li>
       <li>pair and group programming and debugging, especially involving Google Maps API for map visualization of each walk </li>
