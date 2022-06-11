@@ -12,10 +12,10 @@ Project highlights:
       <li>designing UI for app's pages and implementing these in XML </li>
       <li>utilizing GPS to record and calculate distances of user's walks </li>
       <li>setting up Google Firebase and designing schema for storing incoming data </li>
-      <li>managing deserialization of information from the database into User object</li>
-      <li>implementing menu navigation and log out functionality </li>
-      <li>and assisting in debugging and code cleaning process consistently throughout 1 month duration of the project, prioritizing readability of code and reduction of time and space complexity to optimize within the confines of mobile hardware. </li>
-    </ul></li>
+      <li>implementing walk cards for each recorded walk </li>
+      <li>pair and group programming and debugging, especially involving Google Maps API for map visualization of each walk </li>
+    </ul>
+  </li>
   
 <img src="https://user-images.githubusercontent.com/46666676/129483870-a671767f-d26b-4730-b979-59c6951f7609.png" alt="drawing" width="250"/>
 <img src="https://user-images.githubusercontent.com/46666676/129483874-cc395afc-e69a-4932-bbaf-2286e264dffd.png" alt="drawing" width="250"/>
